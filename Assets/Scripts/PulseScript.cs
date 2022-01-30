@@ -12,14 +12,18 @@ public class PulseScript : MonoBehaviour
     public bool pulseActive;
     private bool pulseGrowing;
     public PlayerControls.playerColor color;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         maxPulseRadius = new Vector3(2f, 2f);
         pulseSpeed = 10f;
         pulseActive = true;
         pulseGrowing = true;
     }
+    
     void PulseControls()
     {
         if (transform.localScale.y < maxPulseRadius.y && pulseGrowing == true)

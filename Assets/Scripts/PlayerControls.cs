@@ -16,9 +16,10 @@ public class PlayerControls : MonoBehaviour
     }
     public playerColor color;
 
+    [SerializeField] GameManager gameManager;
     void Start()
     {
-        movementSpeed = 1f;
+        movementSpeed = 2f;
     }
 
     bool PulseActive()
@@ -59,9 +60,13 @@ public class PlayerControls : MonoBehaviour
         }
         
 
-        if (Input.GetKeyDown(KeyCode.F) && !PulseActive())
+        if (Input.GetKeyDown(KeyCode.E) && !PulseActive())
         {
             Pulse();
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            gameManager.SwapPlayers();
         }
     }
     void Pulse()

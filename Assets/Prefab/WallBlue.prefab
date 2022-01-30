@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4029407372393450210}
   - component: {fileID: 3031128909789661874}
-  m_Layer: 7
+  - component: {fileID: 1716116209}
+  m_Layer: 11
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,9 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.82
+  m_FalloffIntensity: 0.5
   m_Color: {r: 0, g: 0.972549, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0
   m_LightVolumeOpacity: 0
   m_ApplyToSortingLayers: 00000000
   m_LightCookieSprite: {fileID: 0}
@@ -65,13 +66,32 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 1.5
+  m_ShapeLightFalloffSize: 1
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.6, y: -0.6, z: 0}
-  - {x: 0.6, y: -0.6, z: 0}
-  - {x: 0.6, y: 0.6, z: 0}
-  - {x: -0.6, y: 0.5999999, z: 0}
+  - {x: -0.5, y: -1.9, z: 0}
+  - {x: 0.5, y: -1.9, z: 0}
+  - {x: 0.5, y: 2.2, z: 0}
+  - {x: -0.5, y: 2.2, z: 0}
+--- !u!95 &1716116209
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4655770149386033215}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1fd49692155de744cab24b34967e3a20, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5552871159182154917
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,11 +103,10 @@ GameObject:
   - component: {fileID: 1844807449094427797}
   - component: {fileID: 8786355514851617061}
   - component: {fileID: 3189007884043118823}
-  - component: {fileID: -2496831147436813051}
-  - component: {fileID: -5497712646947331543}
-  m_Layer: 0
+  - component: {fileID: 2116818997}
+  m_Layer: 11
   m_Name: WallBlue
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +166,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 17f7df5745da3d7488c009b6490a440f, type: 3}
   m_Color: {r: 0, g: 0.4682846, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -171,20 +190,20 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.006289184, y: 0.13084966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.25, y: 4.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.78616595, y: 3.972158}
   m_EdgeRadius: 0
---- !u!114 &-2496831147436813051
+--- !u!114 &2116818997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,28 +212,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5552871159182154917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c4bced57ac66a54a8ac99f52998a601, type: 3}
+  m_Script: {fileID: 11500000, guid: b976cfe495508b848ad5e9dc0d1e1733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
---- !u!50 &-5497712646947331543
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5552871159182154917}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 1
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] GameObject orangePlayer;
-    [SerializeField] GameObject bluePlayer;
+    
     [SerializeField] GameObject GameWonMenu;
     [SerializeField] GameObject GameLostMenu;
     GameObject active;
@@ -16,8 +15,34 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        active = bluePlayer;
-        orangePlayer.GetComponent<PlayerControls>().enabled = false;
+        [SerializeField] PlayerControls playerOrange;
+        [SerializeField] PlayerControls playerBlue;
+        playerBlue.gameObject.SetActive(true);
+        playerOrange.gameObject.SetActive(false);
+    }
+    public GameObject GetActivePlayer()
+    {
+        if (playerBlue.gameObject.activeSelf)
+        {
+            return playerBlue.gameObject;
+        }
+        else
+        {
+            return playerOrange.gameObject;
+        }
+    }
+    public void SwapPlayers()
+    {
+        if (playerBlue.gameObject.activeSelf)
+        {
+            playerBlue.gameObject.SetActive(false);
+            playerOrange.gameObject.SetActive(true);
+        }
+        else if (playerOrange.gameObject.activeSelf)
+        {
+            playerOrange.gameObject.SetActive(false);
+            playerBlue.gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
