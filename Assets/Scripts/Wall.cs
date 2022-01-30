@@ -5,7 +5,6 @@ using UnityEngine;
 public class Wall : MonoBehaviour
 {
     public PlayerControls.playerColor color;
-    public bool pinged = true;
     GameObject target;
 
     // Start is called before the first frame update

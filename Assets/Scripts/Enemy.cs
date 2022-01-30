@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public PlayerControls.playerColor color;
     GameObject target;
     public float maxSpeed;
-    Vector3 position, velocity, targetPosition;
+    public Vector3 position, velocity, targetPosition;
     public bool pinged;
 
     // Start is called before the first frame update
@@ -52,6 +52,11 @@ public class Enemy : MonoBehaviour
         velocity += pursuingForce * Time.deltaTime;
         position += velocity * Time.deltaTime;
         transform.position = position;
+        bool closeEnough = position.x - targetPosition.x < Mathf.Abs(0.01f) && position.y - targetPosition.y < Mathf.Abs(0.01f);
+        if (closeEnough)
+        {
+            Unping();
+        }
     }
 
     //Collision logic and kill here
