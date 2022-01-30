@@ -18,27 +18,8 @@ public class Wall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pinged) Show();
-        else Hide();
+
     }
 
-    void Show()
-    {
-        gameObject.GetComponent<SpriteRenderer>().enabled = true;
-    }
-
-    void Hide()
-    {
-        gameObject.GetComponent<SpriteRenderer>().enabled = false;
-    }
-
-    public void Ping()
-    {
-        pinged = true;
-    }
-
-    public void Unping()
-    {
-        pinged = false;
-    }
+    //Collision logic and kill here
 }

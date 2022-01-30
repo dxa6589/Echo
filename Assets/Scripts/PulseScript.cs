@@ -69,7 +69,6 @@ public class PulseScript : MonoBehaviour
         {
             if (pingedObj.GetComponent<Wall>().color == color)
             {
-                pingedObj.GetComponent<Wall>().Ping();
                 pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
             }
         }
@@ -81,24 +80,17 @@ public class PulseScript : MonoBehaviour
                 pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
             }
         }
-        //pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-        pingedStore.Add(pingedObj);
     }
 
     void Unping(Collider2D pingedObj)
     {
-        //pingedObj.GetComponent<SpriteRenderer>().color = Color.white;
-        if (pingedObj.tag == "Pingable")
+        print("Unpinging " + pingedObj.name);
+        if (pingedObj.tag == "Enemy")
         {
-            if (pingedObj.GetComponent<Wall>())
-            {
-                pingedObj.GetComponent<Wall>().Unping();
-            }
-            else if (pingedObj.GetComponent<Enemy>())
+            if (pingedObj.GetComponent<Enemy>())
             {
                 pingedObj.GetComponent<Enemy>().Unping();
             }
         }
-        pingedStore.Remove(pingedObj);
     }
 }

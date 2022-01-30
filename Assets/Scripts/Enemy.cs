@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public PlayerControls.playerColor color;
     GameObject target;
     public float maxSpeed;
-    public Vector3 position, velocity, acceleration, targetPosition;
+    Vector3 position, velocity, targetPosition;
     public bool pinged;
 
     // Start is called before the first frame update
@@ -18,7 +18,6 @@ public class Enemy : MonoBehaviour
 
         position = transform.position;
         velocity = Vector3.zero;
-        acceleration = Vector3.zero;
     }
 
     // Update is called once per frame
@@ -54,4 +53,6 @@ public class Enemy : MonoBehaviour
         position += velocity * Time.deltaTime;
         transform.position = position;
     }
+
+    //Collision logic and kill here
 }
