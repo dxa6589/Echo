@@ -1475,6 +1475,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyOrange
       objectReference: {fileID: 0}
+    - target: {fileID: 1025992179947393793, guid: 5e00230640358064286cc350b05ab2f7, type: 3}
+      propertyPath: m_TagString
+      value: PlayerOrange
+      objectReference: {fileID: 0}
     - target: {fileID: 1025992179947393795, guid: 5e00230640358064286cc350b05ab2f7, type: 3}
       propertyPath: m_RootOrder
       value: 2
