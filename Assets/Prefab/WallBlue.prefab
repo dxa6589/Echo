@@ -83,6 +83,7 @@ GameObject:
   - component: {fileID: 1844807449094427797}
   - component: {fileID: 8786355514851617061}
   - component: {fileID: 3189007884043118823}
+  - component: {fileID: -2496831147436813051}
   m_Layer: 0
   m_Name: WallBlue
   m_TagString: Untagged
@@ -182,3 +183,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-2496831147436813051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552871159182154917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4bced57ac66a54a8ac99f52998a601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  pinged: 1

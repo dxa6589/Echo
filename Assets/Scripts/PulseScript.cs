@@ -11,6 +11,7 @@ public class PulseScript : MonoBehaviour
     public Vector3 maxPulseRadius;
     public bool pulseActive;
     private bool pulseGrowing;
+    public PlayerControls.playerColor color;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,8 @@ public class PulseScript : MonoBehaviour
                         print(pingedObj.name);
                         if (pingedObj.tag != "Player")
                         {
-                            pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+                            Ping(pingedObj);
+                            //pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
                         }
                     }
                     pulseActive = false;
@@ -56,7 +58,47 @@ public class PulseScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         PulseControls();
+
+    }
+
+    void Ping(Collider2D pingedObj)
+    {
+        print("Pinging " + pingedObj.name);
+        if (pingedObj.tag == "Wall")
+        {
+            if (pingedObj.GetComponent<Wall>().color == color)
+            {
+                pingedObj.GetComponent<Wall>().Ping();
+                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+            }
+        }
+        else if (pingedObj.tag == "Enemy")
+        {
+            if (pingedObj.GetComponent<Enemy>().color == color)
+            {
+                pingedObj.GetComponent<Enemy>().Ping();
+                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+            }
+        }
+        //pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+        pingedStore.Add(pingedObj);
+    }
+
+    void Unping(Collider2D pingedObj)
+    {
+        //pingedObj.GetComponent<SpriteRenderer>().color = Color.white;
+        if (pingedObj.tag == "Pingable")
+        {
+            if (pingedObj.GetComponent<Wall>())
+            {
+                pingedObj.GetComponent<Wall>().Unping();
+            }
+            else if (pingedObj.GetComponent<Enemy>())
+            {
+                pingedObj.GetComponent<Enemy>().Unping();
+            }
+        }
+        pingedStore.Remove(pingedObj);
     }
 }

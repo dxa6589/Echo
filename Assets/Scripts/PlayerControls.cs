@@ -9,6 +9,13 @@ public class PlayerControls : MonoBehaviour
     private float movementSpeed;
     [SerializeField] GameObject pulsePrefab;
     public bool isPlayerActive;
+    public enum playerColor
+    {
+        orange,
+        blue
+    }
+    public playerColor color;
+
     void Start()
     {
         movementSpeed = 1f;
@@ -60,7 +67,7 @@ public class PlayerControls : MonoBehaviour
     void Pulse()
     {
         GameObject pulse = Instantiate(pulsePrefab,transform.position,Quaternion.identity);
-        
+        pulse.GetComponent<PulseScript>().color = color;        
     }
 
     // Update is called once per frame

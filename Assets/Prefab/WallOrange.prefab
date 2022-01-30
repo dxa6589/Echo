@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1290446966444736645}
   - component: {fileID: 1290446966444736646}
   - component: {fileID: 1290446966444736647}
+  - component: {fileID: 5928723697782716834}
   m_Layer: 7
   m_Name: WallOrange
   m_TagString: Untagged
@@ -110,6 +111,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5928723697782716834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290446966444736640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c4bced57ac66a54a8ac99f52998a601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 0
+  pinged: 1
 --- !u!1 &3238156478094225727
 GameObject:
   m_ObjectHideFlags: 0
