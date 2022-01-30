@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5022107704745244689}
   m_Layer: 0
   m_Name: EchoPulseBlue
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxPulseRadius: {x: 0, y: 0, z: 0}
   pulseActive: 0
+  color: 0
 --- !u!114 &-5022107704745244689
 MonoBehaviour:
   m_ObjectHideFlags: 0

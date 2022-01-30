@@ -14,6 +14,7 @@ public class PulseScript : MonoBehaviour
     public PlayerControls.playerColor color;
     private GameManager gameManager;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,7 +47,8 @@ public class PulseScript : MonoBehaviour
                         print(pingedObj.name);
                         if (pingedObj.tag != "Player")
                         {
-                            Ping(pingedObj);
+                            //Ping(pingedObj);
+                            pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
                         }
                     }
                     pulseActive = false;
@@ -68,20 +70,24 @@ public class PulseScript : MonoBehaviour
     void Ping(Collider2D pingedObj)
     {
         print("Pinging " + pingedObj.name);
-        if (pingedObj.tag == "Wall")
+        if (pingedObj.tag == "Blue" && gameManager.GetActivePlayer().tag == "PlayerBlue")
         {
-            if (pingedObj.GetComponent<Wall>().color == color)
+            if (pingedObj.GetComponent<HostileScript>().isBlue == true)
             {
                 pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
             }
         }
-        else if (pingedObj.tag == "Enemy")
+        else if (pingedObj.tag == "Orange" && gameManager.GetActivePlayer().tag == "PlayerOrange")
         {
-            if (pingedObj.GetComponent<Enemy>().color == color)
+            if (pingedObj.GetComponent<HostileScript>().isBlue == false)
+            {
+                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+            }
+            /*if (pingedObj.GetComponent<Enemy>().color == color)
             {
                 pingedObj.GetComponent<Enemy>().Ping();
                 pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-            }
+            }*/
         }
     }
 }

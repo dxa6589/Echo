@@ -10,13 +10,15 @@ public class GameManager : MonoBehaviour
     
     [SerializeField] GameObject GameWonMenu;
     [SerializeField] GameObject GameLostMenu;
+    [SerializeField] PlayerControls playerOrange;
+    [SerializeField] PlayerControls playerBlue;
     GameObject active;
     public static GameManager instance;
+
     void Start()
     {
         instance = this;
-        [SerializeField] PlayerControls playerOrange;
-        [SerializeField] PlayerControls playerBlue;
+        
         playerBlue.gameObject.SetActive(true);
         playerOrange.gameObject.SetActive(false);
     }
@@ -48,32 +50,17 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (active == bluePlayer)
-            {
-                active = orangePlayer;
-                orangePlayer.GetComponent<PlayerControls>().enabled = true;
-                bluePlayer.GetComponent<PlayerControls>().enabled = false;
-            }
-            else
-            {
-                active = bluePlayer;
-                orangePlayer.GetComponent<PlayerControls>().enabled = false;
-                bluePlayer.GetComponent<PlayerControls>().enabled = true;
-            }
-        }
     }
 
     public GameObject GetPlayer(PlayerControls.playerColor color)
     {
         if (color == PlayerControls.playerColor.orange)
         {
-            return orangePlayer;
+            return playerOrange.gameObject;
         }
         else
         {
-            return bluePlayer;
+            return playerBlue.gameObject;
         }
     }
 
@@ -81,11 +68,11 @@ public class GameManager : MonoBehaviour
     {
         if (color == PlayerControls.playerColor.orange)
         {
-            return bluePlayer;
+            return playerBlue.gameObject;
         }
         else
         {
-            return orangePlayer;
+            return playerOrange.gameObject;
         }
     }
 
@@ -93,8 +80,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Game Won!");
         GameWonMenu.SetActive(true);
-        bluePlayer.GetComponent<PlayerControls>().enabled = false;
-        orangePlayer.GetComponent<PlayerControls>().enabled = false;
+        playerBlue.enabled = false;
+        playerOrange.enabled = false;
     }
 
     public void GameLost(string message)
@@ -102,8 +89,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game Won!");
         GameLostMenu.transform.Find("LossDetails").GetComponent<Text>().text = message;
         GameLostMenu.SetActive(true);
-        bluePlayer.GetComponent<PlayerControls>().enabled = false;
-        orangePlayer.GetComponent<PlayerControls>().enabled = false;
+        playerBlue.enabled = false;
+        playerOrange.enabled = false;
     }
 
     public void Restart()

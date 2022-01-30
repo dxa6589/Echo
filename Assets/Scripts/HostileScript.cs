@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class HostileScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    bool isBlue;
+    public bool isBlue;
     void Start()
     {
         if (this.tag == "Orange")
