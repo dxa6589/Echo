@@ -7,8 +7,8 @@ public class Enemy : MonoBehaviour
     public PlayerControls.playerColor color;
     GameObject target;
     public float maxSpeed;
-    public Vector3 position, velocity, targetPosition;
-    public bool pinged;
+    Vector3 position, velocity, targetPosition;
+    bool pinged;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour
         pinged = true;
     }
 
-    public void Unping()
-    {
-        pinged = false;
-    }
-
     void Pursue()
     {
         Vector3 desiredVelocity = targetPosition - position;
@@ -55,9 +50,17 @@ public class Enemy : MonoBehaviour
         bool closeEnough = position.x - targetPosition.x < Mathf.Abs(0.01f) && position.y - targetPosition.y < Mathf.Abs(0.01f);
         if (closeEnough)
         {
-            Unping();
+            pinged = false;
         }
     }
 
     //Collision logic and kill here
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.Equals(target))
+        {
+            other.GetComponent<PlayerControls>().Kill();
+            velocity = Vector3.zero;
+        }
+    }
 }

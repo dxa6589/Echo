@@ -70,6 +70,14 @@ public class PlayerControls : MonoBehaviour
         pulse.GetComponent<PulseScript>().color = color;        
     }
 
+    public void Kill()
+    {
+        string message = ("Oh no! The " + color+" dolphin was killed!");
+        Debug.Log(message);
+        GameManager.instance.GameLost(message);
+        GetComponent<SpriteRenderer>().color = Color.red;
+    }
+
     // Update is called once per frame
     void Update()
     {

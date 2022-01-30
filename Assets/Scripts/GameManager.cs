@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject orangePlayer;
     [SerializeField] GameObject bluePlayer;
+    [SerializeField] GameObject GameWonMenu;
+    [SerializeField] GameObject GameLostMenu;
     GameObject active;
     public static GameManager instance;
     void Start()
@@ -58,5 +62,31 @@ public class GameManager : MonoBehaviour
         {
             return orangePlayer;
         }
+    }
+
+    public void GameWon()
+    {
+        Debug.Log("Game Won!");
+        GameWonMenu.SetActive(true);
+        bluePlayer.GetComponent<PlayerControls>().enabled = false;
+        orangePlayer.GetComponent<PlayerControls>().enabled = false;
+    }
+
+    public void GameLost(string message)
+    {
+        Debug.Log("Game Won!");
+        GameLostMenu.transform.Find("LossDetails").GetComponent<Text>().text = message;
+        GameLostMenu.SetActive(true);
+        bluePlayer.GetComponent<PlayerControls>().enabled = false;
+        orangePlayer.GetComponent<PlayerControls>().enabled = false;
+    }
+
+    public void Restart()
+    {
+        Debug.Log("Game restarted");
+        Scene currentScene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(currentScene.name);
+        //GameWonMenu.SetActive(false);
+        //GameLostMenu.SetActive(false);
     }
 }

@@ -43,7 +43,6 @@ public class PulseScript : MonoBehaviour
                         if (pingedObj.tag != "Player")
                         {
                             Ping(pingedObj);
-                            //pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
                         }
                     }
                     pulseActive = false;
@@ -78,18 +77,6 @@ public class PulseScript : MonoBehaviour
             {
                 pingedObj.GetComponent<Enemy>().Ping();
                 pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-            }
-        }
-    }
-
-    void Unping(Collider2D pingedObj)
-    {
-        print("Unpinging " + pingedObj.name);
-        if (pingedObj.tag == "Enemy")
-        {
-            if (pingedObj.GetComponent<Enemy>())
-            {
-                pingedObj.GetComponent<Enemy>().Unping();
             }
         }
     }

@@ -10,7 +10,6 @@ public class Wall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //pinged = false;
         target = GameManager.instance.GetOtherPlayer(color);
     }
 
@@ -21,4 +20,12 @@ public class Wall : MonoBehaviour
     }
 
     //Collision logic and kill here
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.Equals(target))
+        {
+            other.GetComponent<PlayerControls>().Kill();
+        }
+    }
+
 }
