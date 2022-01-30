@@ -11,14 +11,18 @@ public class PulseScript : MonoBehaviour
     public Vector3 maxPulseRadius;
     public bool pulseActive;
     private bool pulseGrowing;
+    private GameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         maxPulseRadius = new Vector3(2f, 2f);
         pulseSpeed = 10f;
         pulseActive = true;
         pulseGrowing = true;
     }
+    
     void PulseControls()
     {
         if (transform.localScale.y < maxPulseRadius.y && pulseGrowing == true)
@@ -41,6 +45,13 @@ public class PulseScript : MonoBehaviour
                         print(pingedObj.name);
                         if (pingedObj.tag != "Player")
                         {
+
+
+                            //Scrapped code made to have lights(especially enemy lights point towards the player deadline coming up cant fix)
+                            /*
+                            Vector3 fallOffDir = pingedObj.transform.position - gameManager.GetActivePlayer().transform.position;
+                            fallOffDir = fallOffDir.normalized;
+                            pingedObj.GetComponent<Light2D>().shapeLightFalloffOffset.Set(fallOffDir.x*2,fallOffDir.y*2);*/
                             pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
                         }
                     }

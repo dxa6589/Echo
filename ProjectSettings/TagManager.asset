@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Wall
   - Enemy
+  - Blue
+  - Orange
+  - PlayerOrange
+  - PlayerBlue
   layers:
   - Default
   - TransparentFX
@@ -18,10 +22,10 @@ TagManager:
   - obstacle
   - player1
   - player2
-  - 
-  - 
-  - 
-  - 
+  - Blue
+  - Orange
+  - PlayerBlue
+  - PlayerOrange
   - 
   - 
   - 

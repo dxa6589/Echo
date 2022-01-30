@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1320887719288238774}
   - component: {fileID: 1320887719288238408}
   - component: {fileID: 564199706486303524}
-  m_Layer: 9
+  - component: {fileID: 4848291617648160795}
+  m_Layer: 14
   m_Name: PlayerOrange
-  m_TagString: Player
+  m_TagString: PlayerOrange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 1, g: 0.4694984, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8f2fbf5633d89a34a8b4c10fb6978e66, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -97,8 +98,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c886031163811d4e8e7be9e6373a37b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pulsePrefab: {fileID: 6188796675623800566, guid: a62572a76d6bcc245acc377e27f37585, type: 3}
-  isPlayerActive: 0
+  pulsePrefab: {fileID: 8537619700399045879, guid: 6d1e9221a8210cb4bb0122489d05ee14, type: 3}
+  gameManager: {fileID: 0}
 --- !u!58 &564199706486303524
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -115,6 +116,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &4848291617648160795
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1320887719288238411}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!1 &4470438410098899697
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +147,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6071403167723950948}
   - component: {fileID: 269024879403029831}
-  m_Layer: 9
+  - component: {fileID: 2045346903915301715}
+  m_Layer: 14
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,3 +216,22 @@ MonoBehaviour:
   - {x: -0.029619694, y: 0.53726435, z: 0}
   - {x: -0.34615493, y: 0.3888898, z: 0}
   - {x: -0.52534246, y: 0.058635592, z: 0}
+--- !u!95 &2045346903915301715
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4470438410098899697}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0119d222d3bc5a947bc65558684d2439, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
