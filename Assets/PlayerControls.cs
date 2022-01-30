@@ -7,7 +7,6 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
 
     private float movementSpeed;
-    private bool pulseActive;
     [SerializeField] GameObject pulsePrefab;
     public bool isPlayerActive;
     void Start()
