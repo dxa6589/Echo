@@ -81,12 +81,17 @@ public class GameManager : MonoBehaviour
         orangePlayer.GetComponent<PlayerControls>().enabled = false;
     }
 
-    public void Restart()
+    void Restart()
     {
         Debug.Log("Game restarted");
         Scene currentScene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(currentScene.name);
-        //GameWonMenu.SetActive(false);
-        //GameLostMenu.SetActive(false);
+    }
+
+    void NextLevel()
+    {
+        Debug.Log("Loading next level");
+        Scene nextScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(nextScene.name);
     }
 }
