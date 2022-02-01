@@ -7,24 +7,34 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    
-    [SerializeField] GameObject GameWonMenu;
-    [SerializeField] GameObject GameLostMenu;
+
     [SerializeField] PlayerControls playerOrange;
     [SerializeField] PlayerControls playerBlue;
-    GameObject active;
+    [SerializeField] GameObject menu, status;
     public static GameManager instance;
+    bool paused, gameActive;
 
     void Start()
     {
         instance = this;
+        paused = false;
+        gameActive = true;
         
-        playerBlue.gameObject.SetActive(true);
-        playerOrange.gameObject.SetActive(false);
+        playerBlue.enabled = true;
+        playerOrange.enabled = false;
+
+        if (menu) print("MENU: " + menu.name);
+        else print("No menu");
+
+        if (!menu)
+        {
+            menu = GameObject.Find("/Canvas/Menu").gameObject;
+            print(menu.name);
+        }
     }
     public GameObject GetActivePlayer()
     {
-        if (playerBlue.gameObject.activeSelf)
+        if (playerBlue.enabled)
         {
             return playerBlue.gameObject;
         }
@@ -37,73 +47,85 @@ public class GameManager : MonoBehaviour
     {
         if (playerBlue.gameObject.activeSelf)
         {
-            playerBlue.gameObject.SetActive(false);
-            playerOrange.gameObject.SetActive(true);
+            playerBlue.enabled = false;
+            playerOrange.enabled = true;
         }
         else if (playerOrange.gameObject.activeSelf)
         {
-            playerOrange.gameObject.SetActive(false);
-            playerBlue.gameObject.SetActive(true);
+            playerBlue.enabled = true;
+            playerOrange.enabled = false;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if ( gameActive && Input.GetKeyDown(KeyCode.Space))
+        {
+            if (paused) Resume();
+            else Pause();
+        }
+
     }
 
-    public GameObject GetPlayer(PlayerControls.playerColor color)
+    public GameObject GetOrangePlayer()
     {
-        if (color == PlayerControls.playerColor.orange)
-        {
-            return playerOrange.gameObject;
-        }
-        else
-        {
-            return playerBlue.gameObject;
-        }
+        return playerOrange.gameObject;
     }
 
-    public GameObject GetOtherPlayer(PlayerControls.playerColor color)
+    public GameObject GetBluePlayer()
     {
-        if (color == PlayerControls.playerColor.orange)
-        {
-            return playerBlue.gameObject;
-        }
-        else
-        {
-            return playerOrange.gameObject;
-        }
+        return playerBlue.gameObject;
     }
 
     public void GameWon()
     {
+        gameActive = false;
         Debug.Log("Game Won!");
-        GameWonMenu.SetActive(true);
-        playerBlue.enabled = false;
-        playerOrange.enabled = false;
+        status.GetComponent<Text>().text = "GAME WON!";
+        menu.SetActive(true);
+        Time.timeScale = 0;
     }
 
-    public void GameLost(string message)
+    public void GameLost()
     {
-        Debug.Log("Game Won!");
-        GameLostMenu.transform.Find("LossDetails").GetComponent<Text>().text = message;
-        GameLostMenu.SetActive(true);
-        playerBlue.enabled = false;
-        playerOrange.enabled = false;
+        gameActive = false;
+        Debug.Log("Game Lost");
+        status.GetComponent<Text>().text = "GAME OVER";
+        menu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Pause()
+    {
+        paused = true;
+        Debug.Log("Game Paused");
+        status.GetComponent<Text>().text = "GAME PAUSED";
+        menu.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void Resume()
+    {
+        paused = false;
+        Debug.Log("Game Resumed");
+        menu.SetActive(false);
+        Time.timeScale = 1;
     }
 
     public void Restart()
     {
+        gameActive = true;
         Debug.Log("Game restarted");
+        Time.timeScale = 1;
         Scene currentScene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(currentScene.name);
     }
 
-    public void NextLevel()
+    public void Quit()
     {
-        Debug.Log("Loading next level");
-        Scene nextScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(nextScene.name);
+        Debug.Log("Quitting game");
+        if (Application.isEditor) UnityEditor.EditorApplication.isPlaying = false;
+        else Application.Quit();
     }
 }

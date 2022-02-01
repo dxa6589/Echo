@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
-    public PlayerControls.playerColor color;
     GameObject target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GameManager.instance.GetOtherPlayer(color);
+        target = tag == "Blue" ? GameManager.instance.GetOrangePlayer() : GameManager.instance.GetBluePlayer();
     }
 
     // Update is called once per frame

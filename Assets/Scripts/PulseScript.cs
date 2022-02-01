@@ -11,14 +11,13 @@ public class PulseScript : MonoBehaviour
     public Vector3 maxPulseRadius;
     public bool pulseActive;
     private bool pulseGrowing;
-    public PlayerControls.playerColor color;
-    private GameManager gameManager;
+    //private GameManager gameManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        //gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         maxPulseRadius = new Vector3(2f, 2f);
         pulseSpeed = 10f;
         pulseActive = true;
@@ -44,11 +43,9 @@ public class PulseScript : MonoBehaviour
                 {
                     foreach (var pingedObj in pingedObjs)
                     {
-                        print(pingedObj.name);
                         if (pingedObj.tag != "Player")
                         {
-                            //Ping(pingedObj);
-                            pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+                            Ping(pingedObj);
                         }
                     }
                     pulseActive = false;
@@ -69,25 +66,16 @@ public class PulseScript : MonoBehaviour
 
     void Ping(Collider2D pingedObj)
     {
-        print("Pinging " + pingedObj.name);
-        if (pingedObj.tag == "Blue" && gameManager.GetActivePlayer().tag == "PlayerBlue")
+        //if right color glow, if enemy then ping
+        if (pingedObj.tag == this.tag || pingedObj.tag == "Wall")
         {
-            if (pingedObj.GetComponent<HostileScript>().isBlue == true)
-            {
-                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-            }
-        }
-        else if (pingedObj.tag == "Orange" && gameManager.GetActivePlayer().tag == "PlayerOrange")
-        {
-            if (pingedObj.GetComponent<HostileScript>().isBlue == false)
-            {
-                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-            }
-            /*if (pingedObj.GetComponent<Enemy>().color == color)
+            print("Triggering " + pingedObj.name);
+            pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
+            if (pingedObj.GetComponent<Enemy>())
             {
                 pingedObj.GetComponent<Enemy>().Ping();
-                pingedObj.GetComponentInChildren<Animator>().SetTrigger("TriggerGlow");
-            }*/
+                print("Pinging " + pingedObj.name);
+            }
         }
     }
 }

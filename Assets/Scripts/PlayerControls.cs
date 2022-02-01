@@ -9,14 +9,8 @@ public class PlayerControls : MonoBehaviour
     private float movementSpeed;
     [SerializeField] GameObject pulsePrefab;
     public bool isPlayerActive;
-    public enum playerColor
-    {
-        orange,
-        blue
-    }
-    public playerColor color;
 
-    [SerializeField] GameManager gameManager;
+    //[SerializeField] GameManager gameManager;
     void Start()
     {
         movementSpeed = 2f;
@@ -66,20 +60,26 @@ public class PlayerControls : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            gameManager.SwapPlayers();
+            GameManager.instance.SwapPlayers();
         }
     }
     void Pulse()
     {
         GameObject pulse = Instantiate(pulsePrefab,transform.position,Quaternion.identity);
-        pulse.GetComponent<PulseScript>().color = color;        
+        if (tag == "PlayerOrange") {
+            pulse.GetComponent<PulseScript>().tag = "Orange";
+        }
+        else if (tag == "PlayerBlue") {
+            pulse.GetComponent<PulseScript>().tag = "Blue";
+        }
+        Debug.Log("Created pulse with tag: "+ pulse.GetComponent<PulseScript>().tag);
     }
 
     public void Kill()
     {
-        string message = ("Oh no! The " + color+" dolphin was killed!");
-        Debug.Log(message);
-        GameManager.instance.GameLost(message);
+        string color = tag == "PlayerOrange" ? "orange" : "blue";
+        Debug.Log("Oh no! The " + color+" dolphin was killed!");
+        GameManager.instance.GameLost();
         GetComponent<SpriteRenderer>().color = Color.red;
     }
 

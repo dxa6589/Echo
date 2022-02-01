@@ -25,31 +25,25 @@ public class Goal : MonoBehaviour
     //Collision logic and kill here
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.tag == "PlayerOrange")
         {
-            if (other.GetComponent<PlayerControls>().color == PlayerControls.playerColor.orange)
-            {
-                orangeCrossed = true;
-            }
-            else
-            {
-                blueCrossed = true;
-            }
+            orangeCrossed = true;
+        }
+        else if (other.tag == "PlayerBlue")
+        {
+            blueCrossed = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.tag == "PlayerOrange")
         {
-            if (other.GetComponent<PlayerControls>().color == PlayerControls.playerColor.orange)
-            {
-                orangeCrossed = false;
-            }
-            else
-            {
-                blueCrossed = false;
-            }
+            orangeCrossed = false;
+        }
+        else if (other.tag == "PlayerBlue")
+        {
+            blueCrossed = false;
         }
     }
 

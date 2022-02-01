@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public PlayerControls.playerColor color;
     GameObject target;
     public float maxSpeed;
     Vector3 position, velocity, targetPosition;
@@ -14,7 +13,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         pinged = false;
-        target = GameManager.instance.GetPlayer(color);
+        target = tag == "Orange" ? GameManager.instance.GetOrangePlayer() : GameManager.instance.GetBluePlayer();
 
         position = transform.position;
         velocity = Vector3.zero;
@@ -25,7 +24,7 @@ public class Enemy : MonoBehaviour
     {
         if (pinged)
         {
-            Pursue();
+            Seek();
         }
         else
         {
@@ -38,7 +37,7 @@ public class Enemy : MonoBehaviour
         pinged = true;
     }
 
-    void Pursue()
+    void Seek()
     {
         Vector3 desiredVelocity = targetPosition - position;
         desiredVelocity = desiredVelocity.normalized * maxSpeed;
@@ -47,7 +46,7 @@ public class Enemy : MonoBehaviour
         velocity += pursuingForce * Time.deltaTime;
         position += velocity * Time.deltaTime;
         transform.position = position;
-        bool closeEnough = position.x - targetPosition.x < Mathf.Abs(0.01f) && position.y - targetPosition.y < Mathf.Abs(0.01f);
+        bool closeEnough = (Mathf.Abs(position.x - targetPosition.x) < 0.01f) && (Mathf.Abs(position.y - targetPosition.y) < 0.01f);
         if (closeEnough)
         {
             pinged = false;
@@ -57,6 +56,7 @@ public class Enemy : MonoBehaviour
     //Collision logic and kill here
     private void OnTriggerEnter2D(Collider2D other)
     {
+        print("Colliding with " + other.name);
         if (other.gameObject.Equals(target))
         {
             other.GetComponent<PlayerControls>().Kill();
