@@ -9,7 +9,8 @@ public class PlayerControls : MonoBehaviour
     private float movementSpeed;
     [SerializeField] GameObject pulsePrefab;
     public bool isPlayerActive;
-
+    private bool hasPlayed;
+    private AudioSource audioSource;
     
     [SerializeField] Sprite playerUp;
     [SerializeField] Sprite playerBack;
@@ -20,14 +21,23 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         movementSpeed = 2f;
+        audioSource = GetComponent<AudioSource>();
     }
 
     bool PulseActive()
     {
-        if (GameObject.Find("EchoPulse(Clone)"))
+        if (GameObject.Find("EchoPulseBlue(Clone)"))
         {
-            PulseScript pulse = GameObject.Find("EchoPulse(Clone)").GetComponent<PulseScript>();
+            PulseScript pulse = GameObject.Find("EchoPulseBlue(Clone)").GetComponent<PulseScript>();
             if(pulse != null)
+            {
+                return pulse.pulseActive;
+            }
+        }
+        if (GameObject.Find("EchoPulseOrange(Clone)"))
+        {
+            PulseScript pulse = GameObject.Find("EchoPulseOrange(Clone)").GetComponent<PulseScript>();
+            if (pulse != null)
             {
                 return pulse.pulseActive;
             }
@@ -66,6 +76,7 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && !PulseActive())
         {
+            audioSource.Play();
             Pulse();
         }
         if (Input.GetKeyDown(KeyCode.Q))
