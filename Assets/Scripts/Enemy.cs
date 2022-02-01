@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
     public float maxSpeed;
     Vector3 position, velocity, targetPosition;
     bool pinged;
+    LightScript lightScript;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +19,14 @@ public class Enemy : MonoBehaviour
 
         position = transform.position;
         velocity = Vector3.zero;
+        lightScript = GetComponentInChildren<LightScript>();
     }
+   
 
     // Update is called once per frame
     void Update()
     {
-        if (pinged)
+        if (pinged && lightScript.isEnemyGlowing)
         {
             Seek();
         }
@@ -37,7 +41,7 @@ public class Enemy : MonoBehaviour
         pinged = true;
     }
 
-    void Seek()
+    public void Seek()
     {
         Vector3 desiredVelocity = targetPosition - position;
         desiredVelocity = desiredVelocity.normalized * maxSpeed;

@@ -123,7 +123,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0924a1224a3bc074d9d2b101407bede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
   maxSpeed: 0.5
 --- !u!1 &4356906566419132695
 GameObject:
@@ -136,6 +135,7 @@ GameObject:
   - component: {fileID: 2138271797877634140}
   - component: {fileID: 863827240552072237}
   - component: {fileID: 261901729}
+  - component: {fileID: 1673110590391564241}
   m_Layer: 12
   m_Name: Freeform Light 2D
   m_TagString: Untagged
@@ -217,3 +217,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1673110590391564241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356906566419132695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5a1a78b9107a94589159d5ecfc73c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemyGlowing: 0

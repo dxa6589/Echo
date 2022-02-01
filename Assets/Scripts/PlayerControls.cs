@@ -10,6 +10,12 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] GameObject pulsePrefab;
     public bool isPlayerActive;
 
+    
+    [SerializeField] Sprite playerUp;
+    [SerializeField] Sprite playerBack;
+    [SerializeField] Sprite playerRight;
+    [SerializeField] Sprite playerLeft;
+
     //[SerializeField] GameManager gameManager;
     void Start()
     {
@@ -36,20 +42,24 @@ public class PlayerControls : MonoBehaviour
             if (Input.GetKey(KeyCode.W))//up
             {
                 transform.position += new Vector3(0, 1) * movementSpeed * Time.deltaTime;
+                this.GetComponent<SpriteRenderer>().sprite = playerUp;
             }
             if (Input.GetKey(KeyCode.S))//down
             {
                 transform.position += new Vector3(0, -1) * movementSpeed * Time.deltaTime;
+                this.GetComponent<SpriteRenderer>().sprite = playerBack;
             }
 
             //Horizontal Movement
             if (Input.GetKey(KeyCode.D))//right
             {
                 transform.position += new Vector3(1, 0) * movementSpeed * Time.deltaTime;
+                this.GetComponent<SpriteRenderer>().sprite = playerRight;
             }
             if (Input.GetKey(KeyCode.A))//left
             {
                 transform.position += new Vector3(-1, 0) * movementSpeed * Time.deltaTime;
+                this.GetComponent<SpriteRenderer>().sprite = playerLeft;
             }
         }
         

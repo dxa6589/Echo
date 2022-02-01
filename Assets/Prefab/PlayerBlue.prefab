@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 507676259}
   - component: {fileID: 507676258}
   - component: {fileID: 8855077684259961522}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: PlayerBlue
   m_TagString: PlayerBlue
   m_Icon: {fileID: 0}
@@ -100,7 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pulsePrefab: {fileID: 6188796675623800566, guid: a62572a76d6bcc245acc377e27f37585, type: 3}
-  gameManager: {fileID: 0}
+  isPlayerActive: 0
+  playerUp: {fileID: 21300000, guid: 26b103335ac0b3347a8ac41625def764, type: 3}
+  playerBack: {fileID: 21300000, guid: 317fd45c0ac4071468eb785fbe11eaa1, type: 3}
+  playerRight: {fileID: 21300000, guid: 09d05e589e569fa4c9f68da411348c87, type: 3}
+  playerLeft: {fileID: 21300000, guid: 7cd7e7c5a09349b45b65f65602faa550, type: 3}
 --- !u!50 &507676259
 Rigidbody2D:
   serializedVersion: 4
@@ -121,7 +125,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!95 &507676258
 Animator:
   serializedVersion: 3
@@ -177,7 +181,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855967018590029624}
   - component: {fileID: 4645327925878480956}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}

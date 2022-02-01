@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 6383452514534545203}
   - component: {fileID: 7676619167100256737}
   - component: {fileID: 2001530730}
-  m_Layer: 11
+  - component: {fileID: 8570300209606107938}
+  m_Layer: 0
   m_Name: Freeform Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,6 +93,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8570300209606107938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899305727232773914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f5a1a78b9107a94589159d5ecfc73c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEnemyGlowing: 0
 --- !u!1 &3955733614989234794
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +118,7 @@ GameObject:
   - component: {fileID: 85902653994446924}
   - component: {fileID: 8005221049223574586}
   - component: {fileID: 575245338}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: EnemyBlue
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -215,5 +229,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0924a1224a3bc074d9d2b101407bede3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
   maxSpeed: 0.5

@@ -1540,10 +1540,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 150914575}
     m_Modifications:
-    - target: {fileID: 899305727232773914, guid: cfdf54c1b3b28a6408c42ca9c8a9d7bb, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1370477532947213872, guid: cfdf54c1b3b28a6408c42ca9c8a9d7bb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1591,10 +1587,6 @@ PrefabInstance:
     - target: {fileID: 3955733614989234794, guid: cfdf54c1b3b28a6408c42ca9c8a9d7bb, type: 3}
       propertyPath: m_Name
       value: EnemyBlue (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3955733614989234794, guid: cfdf54c1b3b28a6408c42ca9c8a9d7bb, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfdf54c1b3b28a6408c42ca9c8a9d7bb, type: 3}
@@ -3783,6 +3775,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3106552683324910539, guid: 90f84ea30af51b24aab12f53d33ff35e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3106552683324910543, guid: 90f84ea30af51b24aab12f53d33ff35e, type: 3}
       propertyPath: m_Name
       value: Goal
@@ -4060,18 +4056,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBlue
       objectReference: {fileID: 0}
-    - target: {fileID: 2366061901672824210, guid: 9f9b4727762e3824591e4d08119e71bf, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7987575682774889741, guid: 9f9b4727762e3824591e4d08119e71bf, type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9070342890586189166, guid: 9f9b4727762e3824591e4d08119e71bf, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 970236283}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f9b4727762e3824591e4d08119e71bf, type: 3}
 --- !u!1001 &2061208712

@@ -11,6 +11,7 @@ public class PulseScript : MonoBehaviour
     public Vector3 maxPulseRadius;
     public bool pulseActive;
     private bool pulseGrowing;
+    
     //private GameManager gameManager;
 
 
@@ -63,6 +64,8 @@ public class PulseScript : MonoBehaviour
         PulseControls();
 
     }
+
+   
 
     void Ping(Collider2D pingedObj)
     {
