@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     }
     public void SwapPlayers()
     {
-        if (playerBlue.gameObject.activeSelf)
+        if (playerBlue.enabled)
         {
             playerBlue.enabled = false;
             playerOrange.enabled = true;
         }
-        else if (playerOrange.gameObject.activeSelf)
+        else if (playerOrange.enabled)
         {
             playerBlue.enabled = true;
             playerOrange.enabled = false;
@@ -125,7 +125,8 @@ public class GameManager : MonoBehaviour
     public void Quit()
     {
         Debug.Log("Quitting game");
-        if (Application.isEditor) UnityEditor.EditorApplication.isPlaying = false;
-        else Application.Quit();
+        //if (Application.isEditor) UnityEditor.EditorApplication.isPlaying = false;
+        //else 
+            Application.Quit();
     }
 }
